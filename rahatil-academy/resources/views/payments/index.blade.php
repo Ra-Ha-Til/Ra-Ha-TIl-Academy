@@ -38,7 +38,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $payment->enrollment->enroll_no }} ({{ $payment->enrollment->student->name }})</td>
-                                    <td>{{ $payment->paid_date->format('d M Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($payment->paid_date)->format('d M Y') }}</td>
                                     <td>${{ number_format($payment->amount, 2) }}</td>
                                     <td>
                                         <a href="{{ route('payments.show', $payment->id) }}" class="btn btn-sm btn-info">

@@ -16,7 +16,7 @@
                             <h5>Enrollment: {{ $payment->enrollment->enroll_no }}</h5>
                             <p>Student: {{ $payment->enrollment->student->name }}</p>
                             <p>Batch: {{ $payment->enrollment->batch->name }}</p>
-                            <p>Paid Date: {{ $payment->paid_date->format('d M Y') }}</p>
+                            <p>Paid Date: {{ \Carbon\Carbon::parse($payment->paid_date)->format('d M Y') }}</p>
                             <p>Amount: ${{ number_format($payment->amount, 2) }}</p>
                         </div>
                     </div>
