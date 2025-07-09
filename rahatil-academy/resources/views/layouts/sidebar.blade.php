@@ -1,5 +1,5 @@
 <div class="sidebar p-3">
-    <h4 class="text-center mb-4">LMS Dashboard</h4>
+    <h4 class="text-center mb-4">Ra Ha Til Academy</h4>
     <ul class="nav flex-column">
         <li class="nav-item">
             <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
