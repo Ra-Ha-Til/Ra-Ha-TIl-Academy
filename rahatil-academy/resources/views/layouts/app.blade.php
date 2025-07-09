@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ra Ha Til Academy - @yield('title')</title>
+
+    <!-- Bootstrap & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom CSS -->
     <style>
         :root {
             --primary-bg: #ffffff;
@@ -27,11 +31,15 @@
             height: 100vh;
             position: fixed;
             width: 250px;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            z-index: 1000;
         }
 
         .main-content {
             margin-left: 250px;
-            padding: 20px;
+            padding: 30px;
         }
 
         .nav-link {
@@ -40,7 +48,8 @@
             margin: 5px 0;
         }
 
-        .nav-link:hover, .nav-link.active {
+        .nav-link:hover,
+        .nav-link.active {
             background-color: var(--hover-bg);
         }
 
@@ -73,32 +82,38 @@
             background-color: var(--hover-bg);
         }
     </style>
+
     @yield('styles')
+    @stack('styles')
 </head>
 <body>
-    <div class="d-flex">
+    <div>
         <!-- Sidebar -->
         @include('layouts.sidebar')
 
         <!-- Main Content -->
-        <div class="main-content w-100">
+        <div class="main-content">
             @yield('content')
         </div>
     </div>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
     <script>
-        // Card click effect
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.card.clickable');
             cards.forEach(card => {
-                card.addEventListener('click', function() {
+                card.addEventListener('click', function () {
                     cards.forEach(c => c.classList.remove('active'));
                     this.classList.add('active');
                 });
             });
         });
     </script>
+
     @yield('scripts')
+    @stack('scripts')
 </body>
 </html>

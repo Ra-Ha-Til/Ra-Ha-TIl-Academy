@@ -1,3 +1,5 @@
+layout>sidebar.blade.php code below:
+
 <div class="sidebar p-3">
     <h4 class="text-center mb-4">Ra Ha Til Academy</h4>
     <ul class="nav flex-column">
