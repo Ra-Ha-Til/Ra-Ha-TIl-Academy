@@ -42,7 +42,7 @@
                                     <td>{{ $enrollment->enroll_no }}</td>
                                     <td>{{ $enrollment->batch->name }}</td>
                                     <td>{{ $enrollment->student->name }}</td>
-                                    <td>{{ $enrollment->join_date->format('d M Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($enrollment->join_date)->format('d M Y') }}</td>
                                     <td>${{ number_format($enrollment->fee, 2) }}</td>
                                     <td>
                                         <a href="{{ route('enrollments.show', $enrollment->id) }}" class="btn btn-sm btn-info">
