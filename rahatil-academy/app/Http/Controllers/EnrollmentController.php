@@ -3,63 +3,74 @@
 namespace App\Http\Controllers;
 
 use App\Models\Enrollment;
+use App\Models\Batch;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class EnrollmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $enrollments = Enrollment::with(['batch', 'student'])->get();
+        return view('enrollments.index', compact('enrollments'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $batches = Batch::all();
+        $students = Student::all();
+        return view('enrollments.create', compact('batches', 'students'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'enroll_no' => 'required|unique:enrollments',
+            'batch_id' => 'required|exists:batches,id',
+            'student_id' => 'required|exists:students,id',
+            'join_date' => 'required|date',
+            'fee' => 'required|numeric',
+        ]);
+
+        Enrollment::create($request->all());
+
+        return redirect()->route('enrollments.index')
+            ->with('success', 'Enrollment created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Enrollment $enrollment)
     {
-        //
+        return view('enrollments.show', compact('enrollment'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Enrollment $enrollment)
     {
-        //
+        $batches = Batch::all();
+        $students = Student::all();
+        return view('enrollments.edit', compact('enrollment', 'batches', 'students'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Enrollment $enrollment)
     {
-        //
+        $request->validate([
+            'enroll_no' => 'required|unique:enrollments,enroll_no,'.$enrollment->id,
+            'batch_id' => 'required|exists:batches,id',
+            'student_id' => 'required|exists:students,id',
+            'join_date' => 'required|date',
+            'fee' => 'required|numeric',
+        ]);
+
+        $enrollment->update($request->all());
+
+        return redirect()->route('enrollments.index')
+            ->with('success', 'Enrollment updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Enrollment $enrollment)
     {
-        //
+        $enrollment->delete();
+
+        return redirect()->route('enrollments.index')
+            ->with('success', 'Enrollment deleted successfully');
     }
 }
