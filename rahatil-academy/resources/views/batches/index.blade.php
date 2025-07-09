@@ -39,7 +39,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $batch->name }}</td>
                                     <td>{{ $batch->course->name }}</td>
-                                    <td>{{ $batch->start_date->format('d M Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($batch->start_date)->format('d M Y') }}</td>
                                     <td>
                                         <a href="{{ route('batches.show', $batch->id) }}" class="btn btn-sm btn-info">
                                             <i class="fas fa-eye"></i> View
