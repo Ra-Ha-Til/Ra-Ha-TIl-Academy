@@ -2,6 +2,103 @@
 
 @section('title', 'Students')
 
+@section('styles')
+<style>
+    /* Colorful Theme Styles */
+    :root {
+        --primary: #3498db;       /* Blue */
+        --secondary: #2ecc71;     /* Green */
+        --accent: #e74c3c;        /* Red */
+        --highlight: #f39c12;     /* Orange */
+        --light: #ecf0f1;         /* Light Gray */
+        --dark: #2c3e50;          /* Dark Blue */
+    }
+    
+    body {
+        background-color: #f5f7fa;
+    }
+    
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    
+    .card-header {
+        background: linear-gradient(135deg, var(--primary), var(--dark));
+        color: white;
+        padding: 15px 20px;
+    }
+    
+    .btn-primary {
+        background-color: var(--primary);
+        border-color: var(--primary);
+    }
+    
+    .btn-success {
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+    }
+    
+    .btn-danger {
+        background-color: var(--accent);
+        border-color: var(--accent);
+    }
+    
+    .btn-warning {
+        background-color: var(--highlight);
+        border-color: var(--highlight);
+    }
+    
+    .table thead th {
+        background-color: var(--dark);
+        color: white;
+        border: none;
+    }
+    
+    .table tbody tr:nth-child(even) {
+        background-color: rgba(52, 152, 219, 0.05);
+    }
+    
+    .table tbody tr:hover {
+        background-color: rgba(46, 204, 113, 0.1);
+    }
+    
+    .badge {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-weight: 500;
+    }
+    
+    .badge-success {
+        background-color: rgba(46, 204, 113, 0.2);
+        color: var(--secondary);
+    }
+    
+    .badge-warning {
+        background-color: rgba(243, 156, 18, 0.2);
+        color: var(--highlight);
+    }
+    
+    .action-btns .btn {
+        margin-right: 5px;
+        border-radius: 50px;
+        min-width: 35px;
+    }
+    
+    /* Status colors */
+    .status-paid {
+        color: var(--secondary);
+        font-weight: 600;
+    }
+    
+    .status-pending {
+        color: var(--highlight);
+        font-weight: 600;
+    }
+</style>
+@endsection
 @section('content')
 <div class="container-fluid">
     <div class="row mb-3">
