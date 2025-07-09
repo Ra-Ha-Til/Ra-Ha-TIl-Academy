@@ -15,7 +15,7 @@
                         <div class="col-md-6">
                             <h5>Name: {{ $batch->name }}</h5>
                             <p>Course: {{ $batch->course->name }}</p>
-                            <p>Start Date: {{ $batch->start_date->format('d M Y') }}</p>
+                            <p>Start Date: {{ \Carbon\Carbon::parse($batch->start_date)->format('d M Y') }}</p>
                         </div>
                     </div>
                     <div class="mt-4">
