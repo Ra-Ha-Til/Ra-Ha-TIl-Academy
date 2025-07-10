@@ -1,5 +1,3 @@
-layout>sidebar.blade.php code below:
-
 <div class="sidebar p-3">
     <h4 class="text-center mb-4">Ra Ha Til Academy</h4>
     <ul class="nav flex-column">
@@ -33,6 +31,13 @@ layout>sidebar.blade.php code below:
                 <i class="fas fa-clipboard-list me-2"></i> Enrollments
             </a>
         </li>
+        @can('view attendances')
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is('attendances*') ? 'active' : '' }}" href="{{ route('attendances.index') }}">
+                <i class="fas fa-calendar-check me-2"></i> Attendance
+            </a>
+        </li>
+        @endcan
         <li class="nav-item">
             <a class="nav-link {{ request()->is('payments*') ? 'active' : '' }}" href="{{ route('payments.index') }}">
                 <i class="fas fa-money-bill-wave me-2"></i> Payments
