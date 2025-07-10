@@ -21,3 +21,4 @@ Route::resource('courses', CourseController::class);
 Route::resource('batches', BatchController::class);
 Route::resource('enrollments', EnrollmentController::class);
 Route::resource('payments', PaymentController::class);
+Route::resource('attendances', AttendanceController::class)->middleware('auth');
