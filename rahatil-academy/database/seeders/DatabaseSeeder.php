@@ -14,6 +14,11 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
+        // Seed roles first
+        $this->call([
+            RolesTableSeeder::class,
+        ]);
+
         // Create 10 teachers
         $teachers = Teacher::factory(10)->create();
 
